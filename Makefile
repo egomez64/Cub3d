@@ -5,7 +5,7 @@ LIBFT = libtf/libft.a
 LIBMLX	= MLX42
 SRCS = main.c
 SRCSINC = $(addprefix $(SRCPATH), $(SRCS))
-HEADERS = -I ./includes -I $(LIBMLX)/include
+HEADERS = -I includes -I $(LIBMLX)/include
 OBJS = $(SRCSINC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g
 LFLAGS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
