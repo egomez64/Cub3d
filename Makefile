@@ -3,7 +3,13 @@ NAME = cub3D
 SRCPATH = src/
 LIBFT = libtf/libft.a
 LIBMLX	= MLX42
-SRCS = main.c
+SRCS = main.c \
+		parsing/init.c \
+		parsing/parsing.c \
+		exec/map.c \
+		exec/hook.c \
+		exec/raycasting.c \
+		exec/free.c
 SRCSINC = $(addprefix $(SRCPATH), $(SRCS))
 HEADERS = -I includes -I $(LIBMLX)/include
 OBJS = $(SRCSINC:.c=.o)

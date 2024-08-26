@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 14:43:16 by egomez            #+#    #+#             */
-/*   Updated: 2024/08/19 14:43:33 by egomez           ###   ########.fr       */
+/*   Created: 2024/08/26 16:51:17 by egomez            #+#    #+#             */
+/*   Updated: 2024/08/26 16:51:18 by egomez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	main()
+t_ray	*init_ray(t_player *player)
 {
-	// init_struct();
-	// pars();
-	// map_start();
-	// hook();
-	// raycasting();
-	// loop();
-	// free_all();
+	//return (tab_of_ray[as_much_as_need_with_fov]);
 }
+
+void	raycasting(t_map *map, t_player *player)
+{}
