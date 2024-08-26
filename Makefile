@@ -6,10 +6,10 @@ LIBMLX	= MLX42
 SRCS = main.c \
 		parsing/init.c \
 		parsing/parsing.c \
-		exec/map.c \
-		exec/hook.c \
-		exec/raycasting.c \
-		exec/free.c
+		setup/map.c \
+		setup/hook.c \
+		setup/raycasting.c \
+		setup/free.c
 SRCSINC = $(addprefix $(SRCPATH), $(SRCS))
 HEADERS = -I includes -I $(LIBMLX)/include
 OBJS = $(SRCSINC:.c=.o)
