@@ -12,5 +12,11 @@
 
 #include <cub3d.h>
 
-void	map_to_mlx(mlx_t *mlx, t_map *map, t_player *player)
-{}
+void	start_game(mlx_t *mlx, t_map *map, t_player *player)
+{
+	mlx_image_t	*img;
+
+	img = mlx_new_image(mlx, S_W, S_H);
+	if (!img || mlx_image_to_window(mlx, img, 0, 0) < 0)
+		return ;
+}

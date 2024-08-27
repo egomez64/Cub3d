@@ -18,4 +18,18 @@ t_ray	*init_ray(t_player *player)
 }
 
 void	raycasting(t_map *map, t_player *player)
-{}
+{
+	double	ray_x;
+	double	ray_y;
+	double	camera_x;
+	int		x;
+
+	x = 0;
+	while (x < S_W)
+	{
+		camera_x = 2 * x / (double)S_W -1;
+		ray_x = player->orientation_x + player->plane_x * camera_x;
+		ray_x = player->orientation_y + player->plane_y * camera_x;
+		x++;
+	}
+}

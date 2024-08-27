@@ -14,8 +14,15 @@
 
 int	main()
 {
-	// init_struct();
+	mlx_t		*mlx;
+	t_player	player;
+	t_map		map;
+
+	init_map(&map);
+	init_player(&player);
+	mlx = mlx_init(S_W, S_H, "Cub3d", 0);
 	// pars();
+	start_game(mlx, &map, &player);
 	// map_start();
 	// hook();
 	// raycasting();

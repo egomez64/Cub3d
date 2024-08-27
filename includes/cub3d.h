@@ -20,13 +20,19 @@
 # include <stdio.h>
 # include <string.h>
 
+# define S_W 1900
+# define S_H 1000
+# define SPEED 5
+
 typedef struct s_player
 {
-    float 	x;
-    float 	y;
-	int		fov;
-	char	orientation;
-}   		t_player;
+    int		x;
+    int 	y;
+	double	plane_x;
+	double	plane_y;
+	int		orientation_x;
+	int		orientation_y;
+}   	t_player;
 
 typedef	struct s_map
 {
@@ -34,7 +40,6 @@ typedef	struct s_map
 	char	*s_texture;
 	char	*w_texture;
 	char	*e_texture;
-
 	char	*f_color;
 	char	*c_color;
 	char	**map;
@@ -52,7 +57,7 @@ void	init_player(t_player *player);
 
 int		parsing(t_map map, t_player player);
 
-void	map_to_mlx(mlx_t *mlx, t_map *map, t_player *player);
+void	start_game(mlx_t *mlx, t_map *map, t_player *player);
 
 void	init_hooks(mlx_t *mlx);
 
