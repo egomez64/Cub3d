@@ -15,6 +15,10 @@
 
 # include "../libft/libft.h"
 # include "MLX42/MLX42.h"
+# include <math.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <string.h>
 
 typedef struct s_player
 {
