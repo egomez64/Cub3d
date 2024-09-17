@@ -1,20 +1,20 @@
 CC=cc
 NAME = cub3D
 SRCPATH = src/
-LIBFT = libtf/libft.a
+LIBFT = libft/libft.a
 LIBMLX	= MLX42
 SRCS = main.c \
-		parsing/init.c \
-		parsing/parsing.c \
-		setup/map.c \
-		setup/hook.c \
-		setup/raycasting.c \
-		setup/free.c
+		setup/init.c \
+		setup/parsing.c \
+		exec/map.c \
+		exec/hook.c \
+		exec/raycasting.c \
+		exec/free.c
 SRCSINC = $(addprefix $(SRCPATH), $(SRCS))
 HEADERS = -I includes -I $(LIBMLX)/include
 OBJS = $(SRCSINC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -g
-LFLAGS = $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LFLAGS = $(LIBMLX)/build/libmlx42.a $(LIBFT) -ldl -lglfw -pthread -lm 
 
 all: $(NAME)
 

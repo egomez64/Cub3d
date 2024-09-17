@@ -13,4 +13,6 @@
 #include <cub3d.h>
 
 void	init_hooks(mlx_t *mlx)
-{}
+{
+	(void)mlx;
+}

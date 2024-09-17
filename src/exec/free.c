@@ -13,4 +13,7 @@
 #include <cub3d.h>
 
 void	free_all(t_map *map, mlx_t *mlx)
-{}
+{
+	(void)map;
+	(void)mlx;
+}

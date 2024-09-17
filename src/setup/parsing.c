@@ -12,5 +12,8 @@
 
 #include <cub3d.h>
 
-int parsing(t_map map, t_player player)
-{}
+void parsing(t_map map, t_player player)
+{
+	(void)map;
+	(void)player;
+}

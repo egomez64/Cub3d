@@ -15,22 +15,26 @@
 void    init_map(t_map *map)
 {
     //tempo
+	map->map = malloc(8 * sizeof(char *));
 	map->map[0] = ft_strdup("1111111");
-	map->map[1] = ft_strdup("1000001");
+	map->map[1] = ft_strdup("1100001");
 	map->map[2] = ft_strdup("1000001");
 	map->map[3] = ft_strdup("1000001");
 	map->map[4] = ft_strdup("1000001");
 	map->map[5] = ft_strdup("1000001");
 	map->map[6] = ft_strdup("1111111");
+	map->map[7] = NULL;
+	map->mlx = mlx_init(S_W, S_H, "Cub3d", 0);
 	//tempo
 }
 
 void    init_player(t_player *player)
 {
 	//tempo
-	player->x = 4;
-	player->y = 3;
-	player->fov = FOV;
+	player->x = 2.5;
+	player->y = 4;
+	player->plane_x = 1;
+	player->plane_y = 0;
 	player->orientation_x = 0;
 	player->orientation_y = -1;
 	//tempo
