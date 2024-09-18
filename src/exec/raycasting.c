@@ -40,8 +40,8 @@ void	raycasting(t_map *map, t_player *player)
 		verline(map->img, x, S_H / 2, S_H, get_color_rgba(0, 255, 0, 255));
 		verline(map->img, x, 0, S_H / 2, get_color_rgba(0, 0, 255, 255));
 		ray.camera_x = 2 * x / (double)S_W -1;
-		ray.ray_x = player->orientation_x + player->plane_x * ray.camera_x;
-		ray.ray_y = player->orientation_y + player->plane_y * ray.camera_x;
+		ray.ray_x = player->dir_x + player->plane_x * ray.camera_x;
+		ray.ray_y = player->dir_y + player->plane_y * ray.camera_x;
 		ray.map_x = (int)player->x;
 		ray.map_y = (int)player->y;
 		if (ray.ray_x == 0)

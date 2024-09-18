@@ -22,7 +22,8 @@
 
 # define S_W 1080
 # define S_H 720
-# define SPEED 5
+# define SPEED 0.06
+# define WALL_DISTANCE 5
 
 typedef struct s_player
 {
@@ -30,8 +31,8 @@ typedef struct s_player
     double	y;
 	double	plane_x;
 	double	plane_y;
-	double	orientation_x;
-	double	orientation_y;
+	double	dir_x;
+	double	dir_y;
 }   	t_player;
 
 typedef	struct s_map
@@ -68,6 +69,13 @@ typedef struct	s_ray
 	int		draw_end;
 }			t_ray;
 
+typedef struct s_game
+{
+	t_player	player;
+	t_map		map;
+	t_ray		ray;
+}				t_game;
+
 void	init_map(t_map *map);
 void	init_player(t_player *player);
 
@@ -75,7 +83,8 @@ void	parsing(t_map map, t_player player);
 
 void	start_game(mlx_t *mlx, t_map *map, t_player *player);
 
-void	init_hooks(mlx_t *mlx);
+void	move(t_game *game);
+void 	update(void *param);
 
 t_ray	*init_ray(t_player *player);
 void	raycasting(t_map *map, t_player *player);

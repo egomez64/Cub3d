@@ -35,7 +35,7 @@ void    init_player(t_player *player)
 	player->y = 4;
 	player->plane_x = 1;
 	player->plane_y = 0;
-	player->orientation_x = 0;
-	player->orientation_y = -1;
+	player->dir_x = 0;
+	player->dir_y = -1;
 	//tempo
 }
