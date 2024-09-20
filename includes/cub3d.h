@@ -23,6 +23,7 @@
 # define S_W 1080
 # define S_H 720
 # define SPEED 0.06
+# define ROTATE_SPEED 0.05
 # define WALL_DISTANCE 5
 
 typedef struct s_player

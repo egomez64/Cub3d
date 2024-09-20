@@ -8,15 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0a153-3130-44a1-b7ad-3a751fc647fb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/free.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exec/hook.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/hook.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/raycasting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/raycasting.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/setup/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/parsing.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/parsing.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +82,7 @@
       <workItem from="1724962076231" duration="4000" />
       <workItem from="1724968420773" duration="2000" />
       <workItem from="1726575227157" duration="1000" />
+      <workItem from="1726833081937" duration="1000" />
     </task>
     <servers />
   </component>

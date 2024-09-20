@@ -18,7 +18,7 @@ void    init_map(t_map *map)
 	map->map = malloc(8 * sizeof(char *));
 	map->map[0] = ft_strdup("1111111");
 	map->map[1] = ft_strdup("1100001");
-	map->map[2] = ft_strdup("1000001");
+	map->map[2] = ft_strdup("1000101");
 	map->map[3] = ft_strdup("1000001");
 	map->map[4] = ft_strdup("1000001");
 	map->map[5] = ft_strdup("1000001");

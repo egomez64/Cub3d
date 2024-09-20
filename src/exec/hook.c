@@ -20,7 +20,7 @@ void 	update(void *param)
 	move(game);
 }
 
-void	move(t_game *game)
+void	u_d(t_game *game)
 {
 	int x;
 	int y;
@@ -45,6 +45,13 @@ void	move(t_game *game)
 		if(game->map.map[(int)game->player.x][y] == '0')
 			game->player.y -= game->player.dir_y * SPEED;
 	}
+}
+
+void	r_l(t_game *game)
+{
+	int	x;
+	int	y;
+
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_A))
 	{
 		x = game->player.x + (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
@@ -65,5 +72,40 @@ void	move(t_game *game)
 		if(game->map.map[(int)game->player.x][y] == '0')
 			game->player.y += game->player.dir_x * SPEED;
 	}
+}
+
+void	rotate(t_game *game)
+{
+	double	old_dirx;
+	double	old_planex;
+
+	if (mlx_is_key_down(game->map.mlx, MLX_KEY_LEFT))
+	{
+		old_dirx = game->player.dir_x;
+		game->player.dir_x = game->player.dir_x * cos(-ROTATE_SPEED) - game->player.dir_y * sin(-ROTATE_SPEED);
+    	game->player.dir_y = old_dirx * sin(-ROTATE_SPEED) + game->player.dir_y * cos(-ROTATE_SPEED);
+		old_planex = game->player.plane_x;
+    	game->player.plane_x = game->player.plane_x * cos(-ROTATE_SPEED) - game->player.plane_y * sin(-ROTATE_SPEED);
+    	game->player.plane_y = old_planex * sin(-ROTATE_SPEED) + game->player.plane_y * cos(-ROTATE_SPEED);
+	}
+	if (mlx_is_key_down(game->map.mlx, MLX_KEY_RIGHT))
+	{
+		old_dirx = game->player.dir_x;
+		game->player.dir_x = game->player.dir_x * cos(ROTATE_SPEED) - game->player.dir_y * sin(ROTATE_SPEED);
+    	game->player.dir_y = old_dirx * sin(ROTATE_SPEED) + game->player.dir_y * cos(ROTATE_SPEED);
+		old_planex = game->player.plane_x;
+    	game->player.plane_x = game->player.plane_x * cos(ROTATE_SPEED) - game->player.plane_y * sin(ROTATE_SPEED);
+    	game->player.plane_y = old_planex * sin(ROTATE_SPEED) + game->player.plane_y * cos(ROTATE_SPEED);
+	}
+}
+
+void	move(t_game *game)
+{
+	if (mlx_is_key_down(game->map.mlx, MLX_KEY_W) || mlx_is_key_down(game->map.mlx, MLX_KEY_S))
+		u_d(game);
+	if (mlx_is_key_down(game->map.mlx, MLX_KEY_A) || mlx_is_key_down(game->map.mlx, MLX_KEY_D))
+		r_l(game);	
+	if (mlx_is_key_down(game->map.mlx, MLX_KEY_RIGHT) || mlx_is_key_down(game->map.mlx, MLX_KEY_LEFT))
+		rotate(game);
 	raycasting(&game->map, &game->player);
 }
