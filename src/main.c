@@ -20,9 +20,7 @@ int	main()
 	init_player(&game.player);
 	// pars();
 	start_game(game.map.mlx, &game.map, &game.player);
-	// map_start();
-	// mlx_key_hook(game.map.mlx, (void *)move, &game);
 	mlx_loop_hook(game.map.mlx, update, &game);
+	mlx_close_hook(game.map.mlx, (mlx_closefunc)free_all, &game);
 	mlx_loop(game.map.mlx);
-	// free_all();
 }

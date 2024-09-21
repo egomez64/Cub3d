@@ -91,5 +91,5 @@ t_ray	*init_ray(t_player *player);
 void	raycasting(t_map *map, t_player *player);
 void	verline(mlx_image_t *img, int x, int draw_start, int draw_end, uint32_t color);
 
-void	free_all(t_map *map, mlx_t *mlx);
+void	free_all(t_game *game);
 #endif

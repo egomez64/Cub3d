@@ -17,6 +17,11 @@ void 	update(void *param)
 	t_game *game;
 
 	game = param;
+	if (mlx_is_key_down(game->map.mlx, MLX_KEY_ESCAPE))
+	{
+		free_all(game);
+		exit(1);
+	}
 	move(game);
 }
 
