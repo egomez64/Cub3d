@@ -12,24 +12,7 @@
 
 #include <cub3d.h>
 
-uint32_t	get_color_rgba(int r, int g, int b, int a)
-{
-	if (r < 0)
-		r = 0;
-	if (r > 255)
-		r = 255;
-	if (g < 0)
-		g = 0;
-	if (g > 255)
-		g = 255;
-	if (b < 0)
-		b = 0;
-	if (b > 255)
-		b = 255;
-	return (r << 24 | g << 16 | b << 8 | a);
-}
-
-void	raycasting(t_map *map, t_player *player)
+void	raycasting(t_map *map, t_player *player, t_game *game)
 {
 	int	x;
 	t_ray	ray;
@@ -37,8 +20,8 @@ void	raycasting(t_map *map, t_player *player)
 	x = 0;
 	while (x < S_W)
 	{
-		verline(map->img, x, S_H / 2, S_H, get_color_rgba(0, 255, 0, 255));
-		verline(map->img, x, 0, S_H / 2, get_color_rgba(0, 0, 255, 255));
+		draw_ceiling_floor(game, x, S_H / 2, S_H, get_color_rgba(0, 255, 0, 255));
+		draw_ceiling_floor(game, x, 0, S_H / 2, get_color_rgba(0, 0, 255, 255));
 		ray.camera_x = 2 * x / (double)S_W -1;
 		ray.ray_x = player->dir_x + player->plane_x * ray.camera_x;
 		ray.ray_y = player->dir_y + player->plane_y * ray.camera_x;
@@ -101,12 +84,11 @@ void	raycasting(t_map *map, t_player *player)
 		ray.draw_end = ray.lineheight / 2 + S_H / 2;
 		if (ray.draw_end >= S_H)
 			ray.draw_end = S_H - 1;
-		uint32_t color;
-		if (ray.side == 1)
+		/*if (ray.side == 1)
 			color = get_color_rgba(255 / 2, 0, 0, 255);
 		else
-			color = get_color_rgba(255, 0, 0, 255);
-		verline(map->img, x, ray.draw_start, ray.draw_end, color);
+			color = get_color_rgba(255, 0, 0, 255);*/
+		draw_wall(game, x, ray.draw_start, ray.draw_end);
 		x++;
 	}
 }

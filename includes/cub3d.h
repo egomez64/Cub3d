@@ -26,6 +26,14 @@
 # define ROTATE_SPEED 0.05
 # define WALL_DISTANCE 5
 
+typedef	struct s_text
+{
+	mlx_image_t	*north;
+	mlx_image_t	*south;
+	mlx_image_t	*east;
+	mlx_image_t	*west;
+}				t_text;
+
 typedef struct s_player
 {
     double	x;
@@ -38,10 +46,6 @@ typedef struct s_player
 
 typedef	struct s_map
 {
-	char	*n_texture;
-	char	*s_texture;
-	char	*w_texture;
-	char	*e_texture;
 	char	*f_color;
 	char	*c_color;
 	mlx_t		*mlx;
@@ -74,22 +78,26 @@ typedef struct s_game
 {
 	t_player	player;
 	t_map		map;
+	t_text		texture;
 	t_ray		ray;
 }				t_game;
 
 void	init_map(t_map *map);
 void	init_player(t_player *player);
+void	init_text(t_game *game);
 
 void	parsing(t_map map, t_player player);
 
-void	start_game(mlx_t *mlx, t_map *map, t_player *player);
+void	start_game(t_game *game, t_map *map, t_player *player);
 
 void	move(t_game *game);
 void 	update(void *param);
+uint32_t	get_color_rgba(int r, int g, int b, int a);
 
 t_ray	*init_ray(t_player *player);
-void	raycasting(t_map *map, t_player *player);
-void	verline(mlx_image_t *img, int x, int draw_start, int draw_end, uint32_t color);
+void	raycasting(t_map *map, t_player *player, t_game *game);
+void	draw_wall(t_game *game, int x, int draw_start, int draw_end);
+void	draw_ceiling_floor(t_game *game, int x, int draw_start, int draw_end, uint32_t color);
 
 void	free_all(t_game *game);
 #endif
