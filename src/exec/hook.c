@@ -112,5 +112,5 @@ void	move(t_game *game)
 		r_l(game);	
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_RIGHT) || mlx_is_key_down(game->map.mlx, MLX_KEY_LEFT))
 		rotate(game);
-	raycasting(&game->map, &game->player);
+	raycasting(&game->map, &game->player, game);
 }

@@ -51,8 +51,8 @@ void	init_text(t_game *game)
 	s = mlx_load_png("../../textures/south.png");
 	e = mlx_load_png("../../textures/east.png");
 	w = mlx_load_png("../../textures/west.png");
-	game->texture.north = mlx_texture_to_image(game->map.mlx, n);
-	game->texture.south = mlx_texture_to_image(game->map.mlx, s);
-	game->texture.east = mlx_texture_to_image(game->map.mlx, e);
-	game->texture.west = mlx_texture_to_image(game->map.mlx, w);
+	game->texture.texture[0] = mlx_texture_to_image(game->map.mlx, n);
+	game->texture.texture[1] = mlx_texture_to_image(game->map.mlx, s);
+	game->texture.texture[2] = mlx_texture_to_image(game->map.mlx, e);
+	game->texture.texture[3] = mlx_texture_to_image(game->map.mlx, w);
 }

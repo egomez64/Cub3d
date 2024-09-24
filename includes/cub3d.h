@@ -22,16 +22,23 @@
 
 # define S_W 1080
 # define S_H 720
+# define T_W 64
+# define T_H 64
 # define SPEED 0.06
 # define ROTATE_SPEED 0.05
 # define WALL_DISTANCE 5
 
 typedef	struct s_text
 {
-	mlx_image_t	*north;
-	mlx_image_t	*south;
-	mlx_image_t	*east;
-	mlx_image_t	*west;
+	mlx_image_t	*texture[4];
+	int			tex_num;
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		tex_pos;
+	uint32_t	color;
+	uint32_t	buff[S_H][S_W];
+
 }				t_text;
 
 typedef struct s_player
@@ -72,6 +79,7 @@ typedef struct	s_ray
 	int		lineheight;
 	int		draw_start;
 	int		draw_end;
+	double	wall_x;
 }			t_ray;
 
 typedef struct s_game

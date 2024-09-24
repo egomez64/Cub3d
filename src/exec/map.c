@@ -41,7 +41,7 @@ void	draw_ceiling_floor(t_game *game, int x, int draw_start, int draw_end, uint3
 	}
 }
 
-void	draw_wall(t_game *game, int x, int draw_start, int draw_end)
+/*void	draw_wall(t_game *game, int x, int draw_start, int draw_end)
 {
 	int	y;
 	uint32_t color;
@@ -59,7 +59,7 @@ void	draw_wall(t_game *game, int x, int draw_start, int draw_end)
 		mlx_put_pixel(game->map.img, x, y, color);
 		y++;
 	}
-}
+}*/
 
 void	start_game(t_game *game, t_map *map, t_player *player)
 {
