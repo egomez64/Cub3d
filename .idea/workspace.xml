@@ -8,9 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0b0a153-3130-44a1-b7ad-3a751fc647fb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/hook.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/hook.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exec/raycasting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/raycasting.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/setup/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/init.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setup/init.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/init.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +85,8 @@
       <workItem from="1724968420773" duration="2000" />
       <workItem from="1726575227157" duration="1000" />
       <workItem from="1726833081937" duration="1000" />
+      <workItem from="1727183244085" duration="1000" />
+      <workItem from="1727183924208" duration="1000" />
     </task>
     <servers />
   </component>

@@ -35,9 +35,9 @@ void	u_d(t_game *game)
 		x = game->player.x + (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
 		y = game->player.y + (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
 
-		if(game->map.map[x][(int)game->player.y] == '0')
+		if(game->map.map[(int)game->player.y][x] == '0')
 			game->player.x += game->player.dir_x * SPEED;
-		if(game->map.map[(int)game->player.x][y] == '0')
+		if(game->map.map[y][(int)game->player.x] == '0')
 			game->player.y += game->player.dir_y * SPEED;
 	}
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_S))
@@ -45,9 +45,9 @@ void	u_d(t_game *game)
 		x = game->player.x - (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
 		y = game->player.y - (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
 
-		if(game->map.map[x][(int)game->player.y] == '0')
+		if(game->map.map[(int)game->player.y][x] == '0')
 			game->player.x -= game->player.dir_x * SPEED;
-		if(game->map.map[(int)game->player.x][y] == '0')
+		if(game->map.map[y][(int)game->player.x] == '0')
 			game->player.y -= game->player.dir_y * SPEED;
 	}
 }
@@ -62,9 +62,9 @@ void	r_l(t_game *game)
 		x = game->player.x + (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
 		y = game->player.y - (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
 
-		if(game->map.map[x][(int)game->player.y] == '0')
+		if(game->map.map[(int)game->player.y][x] == '0')
 			game->player.x += game->player.dir_y * SPEED;
-		if(game->map.map[(int)game->player.x][y] == '0')
+		if(game->map.map[y][(int)game->player.x] == '0')
 			game->player.y -= game->player.dir_x * SPEED;
 	}
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_D))
@@ -72,9 +72,9 @@ void	r_l(t_game *game)
 		x = game->player.x - (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
 		y = game->player.y + (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
 
-		if(game->map.map[x][(int)game->player.y] == '0')
+		if(game->map.map[(int)game->player.y][x] == '0')
 			game->player.x -= game->player.dir_y * SPEED;
-		if(game->map.map[(int)game->player.x][y] == '0')
+		if(game->map.map[y][(int)game->player.x] == '0')
 			game->player.y += game->player.dir_x * SPEED;
 	}
 }

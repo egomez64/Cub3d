@@ -31,13 +31,11 @@
 typedef	struct s_text
 {
 	mlx_image_t	*texture[4];
-	int			tex_num;
 	int			tex_x;
 	int			tex_y;
 	double		step;
 	double		tex_pos;
 	uint32_t	color;
-	uint32_t	buff[S_H][S_W];
 
 }				t_text;
 

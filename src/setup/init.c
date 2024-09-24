@@ -33,10 +33,10 @@ void    init_player(t_player *player)
 	//tempo
 	player->x = 2.5;
 	player->y = 4;
-	player->plane_x = 1;
+	player->plane_x = -1;
 	player->plane_y = 0;
 	player->dir_x = 0;
-	player->dir_y = -1;
+	player->dir_y = 1;
 	//tempo
 }
 
@@ -47,10 +47,10 @@ void	init_text(t_game *game)
 	mlx_texture_t	*e;
 	mlx_texture_t	*w;
 
-	n = mlx_load_png("../../textures/north.png");
-	s = mlx_load_png("../../textures/south.png");
-	e = mlx_load_png("../../textures/east.png");
-	w = mlx_load_png("../../textures/west.png");
+	n = mlx_load_png("./textures/north.png");
+	s = mlx_load_png("./textures/south.png");
+	e = mlx_load_png("./textures/east.png");
+	w = mlx_load_png("./textures/west.png");
 	game->texture.texture[0] = mlx_texture_to_image(game->map.mlx, n);
 	game->texture.texture[1] = mlx_texture_to_image(game->map.mlx, s);
 	game->texture.texture[2] = mlx_texture_to_image(game->map.mlx, e);

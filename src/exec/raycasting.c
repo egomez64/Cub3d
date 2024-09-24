@@ -70,7 +70,7 @@ void	raycasting(t_map *map, t_player *player, t_game *game)
 				ray.map_y += ray.step_y;
 				ray.side = 1;
 			}
-			if (map->map[ray.map_x][ray.map_y] == '1')
+			if (map->map[ray.map_y][ray.map_x] == '1')
 				ray.hit = 1;
 		}
 		if (ray.side == 0)
@@ -84,28 +84,45 @@ void	raycasting(t_map *map, t_player *player, t_game *game)
 		ray.draw_end = ray.lineheight / 2 + S_H / 2;
 		if (ray.draw_end >= S_H)
 			ray.draw_end = S_H - 1;
-		game->texture.tex_num = game->map.map[game->ray.map_x][game->ray.map_y] - 1;
 		if (ray.side == 1)
-			game->ray.wall_x = game->player.x + game->ray.perpwalldist * game->ray.ray_x;
+			ray.wall_x = game->player.x + ray.perpwalldist * ray.ray_x;
 		else
-			game->ray.wall_x = game->player.y + game->ray.perpwalldist * game->ray.ray_y;
-		game->ray.wall_x -= floor((game->ray.wall_x));
-		game->texture.tex_x = (int)(game->ray.wall_x * (double)T_W);
-		if (game->ray.side == 0 && game->ray.ray_x > 0)
+			ray.wall_x = game->player.y + ray.perpwalldist * ray.ray_y;
+		ray.wall_x -= floor((ray.wall_x));
+		game->texture.tex_x = (int)(ray.wall_x * (double)T_W);
+		if (ray.side == 0 && ray.ray_x > 0)
 			game->texture.tex_x = T_W - game->texture.tex_x - 1;
-		if (game->ray.side == 1 && game->ray.ray_x < 0)
+		if (ray.side == 1 && ray.ray_y < 0)
 			game->texture.tex_x = T_W - game->texture.tex_x - 1;
-		game->texture.step = 1.0 * T_H / game->ray.lineheight;
-		game->texture.tex_pos = (game->ray.draw_start - S_H + game->ray.lineheight / 2) * game->texture.step;
-		int y = game->ray.draw_start;
-		while (y < game->ray.draw_end)
+		game->texture.step = 1.0 * T_H / ray.lineheight;
+		game->texture.tex_pos = (ray.draw_start - ray.perpwalldist - S_H / 2 + ray.lineheight / 2) * game->texture.step;
+		int y = ray.draw_start;
+		while (y < ray.draw_end)
 		{
+			
+			uint32_t	coord;
+			int			num;
 			game->texture.tex_y = (int)game->texture.tex_pos & (T_H - 1);
+			coord = (T_W * game->texture.tex_y + (T_W - game->texture.tex_x)) * 4;
 			game->texture.tex_pos += game->texture.step;
-			game->texture.color = game->texture.texture[game->texture.tex_num][T_H * game->texture.tex_y + game->texture.tex_x];
-			if (game->ray.side == 1)
-				game->texture.color = (game->texture.color >> 1) & 8355711;
-			game->texture.buff[y][x] = game->texture.color;
+			if (ray.side == 0)
+			{
+				if (player->x - ray.map_x < 0)
+					num = 2;
+				else
+					num = 3;
+			}
+			else
+			{
+				if (player->y - ray.map_y < 0)
+					num = 1;
+				else
+					num = 0;
+			}
+			game->texture.color = get_color_rgba(game->texture.texture[num]->pixels[coord],
+												game->texture.texture[num]->pixels[coord + 1],
+												game->texture.texture[num]->pixels[coord + 2],
+												game->texture.texture[num]->pixels[coord + 3]);
 			mlx_put_pixel(game->map.img, x, y, game->texture.color);
 			y++;
 		}
