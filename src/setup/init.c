@@ -12,18 +12,46 @@
 
 #include <cub3d.h>
 
+/*void	player_orientation(t_player *player)
+{
+	if (N || S)
+	{
+		player->plane_x = 1;
+		player->plane_y = 0;
+		player->dir_x = 0;
+		player->dir_y = -1;
+	}
+	if (S)
+	{
+		player->plane_x = -1;
+		player->dir_y = 1;
+	}
+	if (E || W)
+	{
+		player->plane_x = 0;
+		player->plane_y = 1;
+		player->dir_x = 1;
+		player->dir_y = 0;
+	}
+	if (W)
+	{
+		player->plane_y = -1;
+		player->dir_x = -1;
+	}
+}*/
+
 void    init_map(t_map *map)
 {
     //tempo
-	map->map = malloc(8 * sizeof(char *));
-	map->map[0] = ft_strdup("1111111");
-	map->map[1] = ft_strdup("1100001");
-	map->map[2] = ft_strdup("1000101");
-	map->map[3] = ft_strdup("1000001");
-	map->map[4] = ft_strdup("1000001");
-	map->map[5] = ft_strdup("1000001");
-	map->map[6] = ft_strdup("1111111");
-	map->map[7] = NULL;
+	map->map = ft_calloc(1, sizeof(char *) * 8);
+	map->map[0] = strdup("1111111");
+	map->map[1] = strdup("1100001");
+	map->map[2] = strdup("1000101");
+	map->map[3] = strdup("1000001");
+	map->map[4] = strdup("1000001");
+	map->map[5] = strdup("1000001");
+	map->map[6] = strdup("1111111");
+	map->map[7] = 0;
 	map->mlx = mlx_init(S_W, S_H, "Cub3d", 0);
 	//tempo
 }
@@ -33,10 +61,11 @@ void    init_player(t_player *player)
 	//tempo
 	player->x = 2.5;
 	player->y = 4;
-	player->plane_x = -1;
+	player->plane_x = 1;
 	player->plane_y = 0;
 	player->dir_x = 0;
-	player->dir_y = 1;
+	player->dir_y = -1;
+	//player_orientation(player);
 	//tempo
 }
 
