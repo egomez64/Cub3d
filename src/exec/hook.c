@@ -12,7 +12,7 @@
 
 #include <cub3d.h>
 
-void 	update(t_game *game)
+void	update(t_game *game)
 {
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_ESCAPE))
 	{
@@ -24,27 +24,25 @@ void 	update(t_game *game)
 
 void	u_d(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_W))
 	{
 		x = game->player.x + (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
 		y = game->player.y + (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
-
-		if(game->map.map[(int)game->player.y][x] == '0')
+		if (game->map.map[(int)game->player.y][x] == '0')
 			game->player.x += game->player.dir_x * SPEED;
-		if(game->map.map[y][(int)game->player.x] == '0')
+		if (game->map.map[y][(int)game->player.x] == '0')
 			game->player.y += game->player.dir_y * SPEED;
 	}
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_S))
 	{
 		x = game->player.x - (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
 		y = game->player.y - (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
-
-		if(game->map.map[(int)game->player.y][x] == '0')
+		if (game->map.map[(int)game->player.y][x] == '0')
 			game->player.x -= game->player.dir_x * SPEED;
-		if(game->map.map[y][(int)game->player.x] == '0')
+		if (game->map.map[y][(int)game->player.x] == '0')
 			game->player.y -= game->player.dir_y * SPEED;
 	}
 }
@@ -58,20 +56,18 @@ void	r_l(t_game *game)
 	{
 		x = game->player.x + (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
 		y = game->player.y - (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
-
-		if(game->map.map[(int)game->player.y][x] == '0')
+		if (game->map.map[(int)game->player.y][x] == '0')
 			game->player.x += game->player.dir_y * SPEED;
-		if(game->map.map[y][(int)game->player.x] == '0')
+		if (game->map.map[y][(int)game->player.x] == '0')
 			game->player.y -= game->player.dir_x * SPEED;
 	}
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_D))
 	{
 		x = game->player.x - (game->player.dir_y + WALL_DISTANCE * game->player.dir_y) * SPEED;
 		y = game->player.y + (game->player.dir_x + WALL_DISTANCE * game->player.dir_x) * SPEED;
-
-		if(game->map.map[(int)game->player.y][x] == '0')
+		if (game->map.map[(int)game->player.y][x] == '0')
 			game->player.x -= game->player.dir_y * SPEED;
-		if(game->map.map[y][(int)game->player.x] == '0')
+		if (game->map.map[y][(int)game->player.x] == '0')
 			game->player.y += game->player.dir_x * SPEED;
 	}
 }
@@ -85,19 +81,19 @@ void	rotate(t_game *game)
 	{
 		old_dirx = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(-ROTATE_SPEED) - game->player.dir_y * sin(-ROTATE_SPEED);
-    	game->player.dir_y = old_dirx * sin(-ROTATE_SPEED) + game->player.dir_y * cos(-ROTATE_SPEED);
+		game->player.dir_y = old_dirx * sin(-ROTATE_SPEED) + game->player.dir_y * cos(-ROTATE_SPEED);
 		old_planex = game->player.plane_x;
-    	game->player.plane_x = game->player.plane_x * cos(-ROTATE_SPEED) - game->player.plane_y * sin(-ROTATE_SPEED);
-    	game->player.plane_y = old_planex * sin(-ROTATE_SPEED) + game->player.plane_y * cos(-ROTATE_SPEED);
+		game->player.plane_x = game->player.plane_x * cos(-ROTATE_SPEED) - game->player.plane_y * sin(-ROTATE_SPEED);
+		game->player.plane_y = old_planex * sin(-ROTATE_SPEED) + game->player.plane_y * cos(-ROTATE_SPEED);
 	}
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_RIGHT))
 	{
 		old_dirx = game->player.dir_x;
 		game->player.dir_x = game->player.dir_x * cos(ROTATE_SPEED) - game->player.dir_y * sin(ROTATE_SPEED);
-    	game->player.dir_y = old_dirx * sin(ROTATE_SPEED) + game->player.dir_y * cos(ROTATE_SPEED);
+		game->player.dir_y = old_dirx * sin(ROTATE_SPEED) + game->player.dir_y * cos(ROTATE_SPEED);
 		old_planex = game->player.plane_x;
-    	game->player.plane_x = game->player.plane_x * cos(ROTATE_SPEED) - game->player.plane_y * sin(ROTATE_SPEED);
-    	game->player.plane_y = old_planex * sin(ROTATE_SPEED) + game->player.plane_y * cos(ROTATE_SPEED);
+		game->player.plane_x = game->player.plane_x * cos(ROTATE_SPEED) - game->player.plane_y * sin(ROTATE_SPEED);
+		game->player.plane_y = old_planex * sin(ROTATE_SPEED) + game->player.plane_y * cos(ROTATE_SPEED);
 	}
 }
 
@@ -106,7 +102,7 @@ void	move(t_game *game)
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_W) || mlx_is_key_down(game->map.mlx, MLX_KEY_S))
 		u_d(game);
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_A) || mlx_is_key_down(game->map.mlx, MLX_KEY_D))
-		r_l(game);	
+		r_l(game);
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_RIGHT) || mlx_is_key_down(game->map.mlx, MLX_KEY_LEFT))
 		rotate(game);
 	raycasting(game);

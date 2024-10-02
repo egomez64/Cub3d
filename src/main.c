@@ -12,16 +12,15 @@
 
 #include <cub3d.h>
 
-int	main()
+int	main(void)
 {
 	t_game	game;
 
 	init_map(&game);
 	init_player(&game);
 	init_text(&game);
-	// pars();
 	start_game(&game);
-	mlx_loop_hook(game.map.mlx, update, &game);
+	mlx_loop_hook(game.map.mlx, (void *)update, (void *)&game);
 	mlx_close_hook(game.map.mlx, (mlx_closefunc)free_all, &game);
 	mlx_loop(game.map.mlx);
 }

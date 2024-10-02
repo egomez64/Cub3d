@@ -40,9 +40,8 @@
 	}
 }*/
 
-void    init_map(t_game *game)
+void	init_map(t_game *game)
 {
-    //tempo
 	game->map.map = ft_calloc(1, sizeof(char *) * 8);
 	game->map.map[0] = strdup("1111111");
 	game->map.map[1] = strdup("1100001");
@@ -56,20 +55,16 @@ void    init_map(t_game *game)
 	game->map.img = mlx_new_image(game->map.mlx, S_W, S_H);
 	if (!game->map.img)
 		return ;
-	//tempo
 }
 
-void    init_player(t_game *game)
+void	init_player(t_game *game)
 {
-	//tempo
 	game->player.x = 2.5;
 	game->player.y = 4;
 	game->player.plane_x = 1;
 	game->player.plane_y = 0;
 	game->player.dir_x = 0;
 	game->player.dir_y = -1;
-	//player_orientation(player);
-	//tempo
 }
 
 void	init_text(t_game *game)

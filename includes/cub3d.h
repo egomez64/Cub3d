@@ -28,7 +28,7 @@
 # define ROTATE_SPEED 0.05
 # define WALL_DISTANCE 5
 
-typedef	struct s_text
+typedef struct s_text
 {
 	mlx_image_t	*texture[4];
 	int			tex_x;
@@ -40,24 +40,24 @@ typedef	struct s_text
 
 typedef struct s_player
 {
-    double	x;
-    double	y;
+	double	x;
+	double	y;
 	double	plane_x;
 	double	plane_y;
 	double	dir_x;
 	double	dir_y;
-}   	t_player;
+}			t_player;
 
-typedef	struct s_map
+typedef struct s_map
 {
-	char	*f_color;
-	char	*c_color;
+	char		*f_color;
+	char		*c_color;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	char	**map;
-}			t_map;
+	char		**map;
+}				t_map;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double	ray_x;
 	double	ray_y;
@@ -98,7 +98,7 @@ void		parsing(t_map map, t_player player);
 void		start_game(t_game *game);
 
 void		move(t_game *game);
-void 		update(t_game *game);
+void		update(t_game *game);
 uint32_t	get_color_rgba(int r, int g, int b, int a);
 
 void		raycasting(t_game *game);
@@ -107,8 +107,9 @@ void		raycasting3(t_game *game);
 void		raycasting4(t_game *game);
 void		raycasting5(t_game *game);
 
-void		draw_ceiling_floor(t_game *game, int draw_start, int draw_end, uint32_t color);
+void		draw_ceiling_floor(t_game *game, int draw_start,
+				int draw_end, uint32_t color);
 void		draw_textures(t_game *game);
 
-void	free_all(t_game *game);
+void		free_all(t_game *game);
 #endif

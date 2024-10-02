@@ -29,7 +29,8 @@ uint32_t	get_color_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	draw_ceiling_floor(t_game *game, int draw_start, int draw_end, uint32_t color)
+void	draw_ceiling_floor(t_game *game, int draw_start,
+						int draw_end, uint32_t color)
 {
 	int	y;
 
@@ -52,6 +53,7 @@ void	draw_textures(t_game *game)
 {
 	uint32_t	coord;
 	int			num;
+	uint8_t		*pix;
 
 	game->texture.tex_y = (int)game->texture.tex_pos & (T_H - 1);
 	coord = (T_W * game->texture.tex_y + (T_W - game->texture.tex_x)) * 4;
@@ -70,9 +72,8 @@ void	draw_textures(t_game *game)
 		else
 			num = 0;
 	}
-	game->texture.color = get_color_rgba(game->texture.texture[num]->pixels[coord],
-											game->texture.texture[num]->pixels[coord + 1],
-											game->texture.texture[num]->pixels[coord + 2],
-											game->texture.texture[num]->pixels[coord + 3]);
+	pix = game->texture.texture[num]->pixels;
+	game->texture.color = get_color_rgba(pix[coord], pix[coord + 1],
+			pix[coord + 2], pix[coord +3]);
 	mlx_put_pixel(game->map.img, game->x, game->y, game->texture.color);
 }
