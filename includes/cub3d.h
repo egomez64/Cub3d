@@ -36,7 +36,6 @@ typedef	struct s_text
 	double		step;
 	double		tex_pos;
 	uint32_t	color;
-
 }				t_text;
 
 typedef struct s_player
@@ -82,28 +81,34 @@ typedef struct	s_ray
 
 typedef struct s_game
 {
+	int			x;
+	int			y;
 	t_player	player;
 	t_map		map;
-	t_text		texture;
 	t_ray		ray;
+	t_text		texture;
 }				t_game;
 
-void	init_map(t_map *map);
-void	init_player(t_player *player);
-void	init_text(t_game *game);
+void		init_map(t_game *game);
+void		init_player(t_game *game);
+void		init_text(t_game *game);
 
-void	parsing(t_map map, t_player player);
+void		parsing(t_map map, t_player player);
 
-void	start_game(t_game *game, t_map *map, t_player *player);
+void		start_game(t_game *game);
 
-void	move(t_game *game);
-void 	update(void *param);
+void		move(t_game *game);
+void 		update(t_game *game);
 uint32_t	get_color_rgba(int r, int g, int b, int a);
 
-t_ray	*init_ray(t_player *player);
-void	raycasting(t_map *map, t_player *player, t_game *game);
-void	draw_wall(t_game *game, int x, int draw_start, int draw_end);
-void	draw_ceiling_floor(t_game *game, int x, int draw_start, int draw_end, uint32_t color);
+void		raycasting(t_game *game);
+void		raycasting2(t_game *game);
+void		raycasting3(t_game *game);
+void		raycasting4(t_game *game);
+void		raycasting5(t_game *game);
+
+void		draw_ceiling_floor(t_game *game, int draw_start, int draw_end, uint32_t color);
+void		draw_textures(t_game *game);
 
 void	free_all(t_game *game);
 #endif

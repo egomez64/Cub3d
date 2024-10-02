@@ -16,11 +16,11 @@ int	main()
 {
 	t_game	game;
 
-	init_map(&game.map);
-	init_player(&game.player);
+	init_map(&game);
+	init_player(&game);
 	init_text(&game);
 	// pars();
-	start_game(&game, &game.map, &game.player);
+	start_game(&game);
 	mlx_loop_hook(game.map.mlx, update, &game);
 	mlx_close_hook(game.map.mlx, (mlx_closefunc)free_all, &game);
 	mlx_loop(game.map.mlx);

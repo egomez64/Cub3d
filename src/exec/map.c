@@ -29,44 +29,50 @@ uint32_t	get_color_rgba(int r, int g, int b, int a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	draw_ceiling_floor(t_game *game, int x, int draw_start, int draw_end, uint32_t color)
+void	draw_ceiling_floor(t_game *game, int draw_start, int draw_end, uint32_t color)
 {
 	int	y;
 
 	y = draw_start;
 	while (y < draw_end)
 	{
-		mlx_put_pixel(game->map.img, x, y, color);
+		mlx_put_pixel(game->map.img, game->x, y, color);
 		y++;
 	}
 }
 
-/*void	draw_wall(t_game *game, int x, int draw_start, int draw_end)
+void	start_game(t_game *game)
 {
-	int	y;
-	uint32_t color;
-	uint32_t coord;
+	if (mlx_image_to_window(game->map.mlx, game->map.img, 0, 0) < 0)
+		return ;
+	raycasting(game);
+}
 
-	y = draw_start;
-	while (y < draw_end)
+void	draw_textures(t_game *game)
+{
+	uint32_t	coord;
+	int			num;
+
+	game->texture.tex_y = (int)game->texture.tex_pos & (T_H - 1);
+	coord = (T_W * game->texture.tex_y + (T_W - game->texture.tex_x)) * 4;
+	game->texture.tex_pos += game->texture.step;
+	if (game->ray.side == 0)
 	{
-		coord = (game->texture.north->width * game->ray.ray_y + (game->texture.north->width
-				- game->ray.ray_x)) * 4;
-		color = get_color_rgba(game->texture.north->pixels[coord],
-			game->texture.north->pixels[coord + 1],
-			game->texture.north->pixels[coord + 2],
-			game->texture.north->pixels[coord + 3]);
-		mlx_put_pixel(game->map.img, x, y, color);
-		y++;
+		if (game->player.x - game->ray.map_x < 0)
+			num = 2;
+		else
+			num = 3;
 	}
-}*/
-
-void	start_game(t_game *game, t_map *map, t_player *player)
-{
-	map->img = mlx_new_image(game->map.mlx, S_W, S_H);
-	if (!map->img)
-		return ;
-	if (mlx_image_to_window(game->map.mlx, map->img, 0, 0) < 0)
-		return ;
-	raycasting(map, player, game);
+	else
+	{
+		if (game->player.y - game->ray.map_y < 0)
+			num = 1;
+		else
+			num = 0;
+	}
+	game->texture.color = get_color_rgba(game->texture.texture[num]->pixels[coord],
+											game->texture.texture[num]->pixels[coord + 1],
+											game->texture.texture[num]->pixels[coord + 2],
+											game->texture.texture[num]->pixels[coord + 3]);
+	mlx_put_pixel(game->map.img, game->x, game->y, game->texture.color);
 }

@@ -12,11 +12,8 @@
 
 #include <cub3d.h>
 
-void 	update(void *param)
+void 	update(t_game *game)
 {
-	t_game *game;
-
-	game = param;
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_ESCAPE))
 	{
 		free_all(game);
@@ -112,5 +109,5 @@ void	move(t_game *game)
 		r_l(game);	
 	if (mlx_is_key_down(game->map.mlx, MLX_KEY_RIGHT) || mlx_is_key_down(game->map.mlx, MLX_KEY_LEFT))
 		rotate(game);
-	raycasting(&game->map, &game->player, game);
+	raycasting(game);
 }
