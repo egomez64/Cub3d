@@ -8,6 +8,7 @@ SRCS = main.c \
 		setup/parsing.c \
 		exec/map.c \
 		exec/hook.c \
+		exec/utils.c \
 		exec/raycasting.c \
 		exec/free.c
 SRCSINC = $(addprefix $(SRCPATH), $(SRCS))

@@ -46,6 +46,8 @@ typedef struct s_player
 	double	plane_y;
 	double	dir_x;
 	double	dir_y;
+	double	old_dirx;
+	double	old_planex;
 }			t_player;
 
 typedef struct s_map
@@ -98,6 +100,7 @@ void		parsing(t_map map, t_player player);
 void		start_game(t_game *game);
 
 void		move(t_game *game);
+void		rotate2(t_game *game);
 void		update(t_game *game);
 uint32_t	get_color_rgba(int r, int g, int b, int a);
 
