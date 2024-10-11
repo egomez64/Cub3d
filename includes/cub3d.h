@@ -28,6 +28,16 @@
 # define ROTATE_SPEED 0.05
 # define WALL_DISTANCE 5
 
+typedef struct s_ceilfloor
+{
+	int	r_ceil;
+	int	g_ceil;
+	int	b_ceil;
+	int	r_floor;
+	int	g_floor;
+	int	b_floor;
+}		t_ceilfloor;
+
 typedef struct s_text
 {
 	mlx_image_t	*texture[4];
@@ -89,6 +99,7 @@ typedef struct s_game
 	t_map		map;
 	t_ray		ray;
 	t_text		texture;
+	t_ceilfloor	ceilfloor;
 }				t_game;
 
 void		init_map(t_game *game);

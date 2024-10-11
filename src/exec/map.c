@@ -74,6 +74,6 @@ void	draw_textures(t_game *game)
 	}
 	pix = game->texture.texture[num]->pixels;
 	game->texture.color = get_color_rgba(pix[coord], pix[coord + 1],
-			pix[coord + 2], pix[coord +3]);
+			pix[coord + 2], pix[coord + 3]);
 	mlx_put_pixel(game->map.img, game->x, game->y, game->texture.color);
 }
