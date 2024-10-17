@@ -54,6 +54,7 @@ void	draw_textures(t_game *game)
 	uint32_t	coord;
 	int			num;
 	uint8_t		*pix;
+	size_t	max_size;
 
 	game->texture.tex_y = (int)game->texture.tex_pos & (T_H - 1);
 	coord = (T_W * game->texture.tex_y + (T_W - game->texture.tex_x)) * 4;
@@ -72,8 +73,12 @@ void	draw_textures(t_game *game)
 		else
 			num = 0;
 	}
+	max_size = game->texture.texture[num]->width * game->texture.texture[num]->height * 4;
 	pix = game->texture.texture[num]->pixels;
-	game->texture.color = get_color_rgba(pix[coord], pix[coord + 1],
-			pix[coord + 2], pix[coord + 3]);
+	
+	if (coord < max_size)
+		game->texture.color = get_color_rgba(pix[coord], pix[coord + 1],
+				pix[coord + 2], pix[coord + 3]);
 	mlx_put_pixel(game->map.img, game->x, game->y, game->texture.color);
 }
+

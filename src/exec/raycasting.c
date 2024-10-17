@@ -112,7 +112,7 @@ void	raycasting(t_game *game)
 	{
 		draw_ceiling_floor(game, S_H / 2, S_H, get_color_rgba(0, 255, 0, 255));
 		draw_ceiling_floor(game, 0, S_H / 2, get_color_rgba(0, 0, 255, 255));
-		game->ray.camera_x = 2 * game->x / (double)S_W -1;
+		game->ray.camera_x = 2 * game->x / (double)S_W - 1;
 		game->ray.ray_x = game->player.dir_x
 			+ game->player.plane_x * game->ray.camera_x;
 		game->ray.ray_y = game->player.dir_y
