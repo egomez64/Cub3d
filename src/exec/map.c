@@ -62,16 +62,16 @@ void	draw_textures(t_game *game)
 	if (game->ray.side == 0)
 	{
 		if (game->player.x - game->ray.map_x < 0)
-			num = 2;
-		else
 			num = 3;
+		else
+			num = 2;
 	}
 	else
 	{
 		if (game->player.y - game->ray.map_y < 0)
-			num = 1;
-		else
 			num = 0;
+		else
+			num = 1;
 	}
 	max_size = game->texture.texture[num]->width * game->texture.texture[num]->height * 4;
 	pix = game->texture.texture[num]->pixels;

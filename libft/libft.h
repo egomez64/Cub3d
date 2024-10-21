@@ -25,7 +25,7 @@ typedef struct s_list
 
 void			ft_bzero(void *s, size_t n);
 unsigned int	ft_strlcpy(char *dst, const char *src, size_t size);
-int				ft_strlen(const char *s);
+size_t			ft_strlen(const char *s);
 void			*ft_calloc(size_t nmemb, size_t size);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *src);

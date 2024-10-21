@@ -14,11 +14,15 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
+#include "../src/parsing/get_next_line/get_next_line.h"
 # include "MLX42/MLX42.h"
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
+# include <stdint.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 # define S_W 1080
 # define S_H 720
@@ -30,17 +34,21 @@
 
 typedef struct s_ceilfloor
 {
-	int	r_ceil;
-	int	g_ceil;
-	int	b_ceil;
-	int	r_floor;
-	int	g_floor;
-	int	b_floor;
+	uint32_t ceil_color;
+	uint32_t floor_color;
 }		t_ceilfloor;
 
 typedef struct s_text
 {
 	mlx_image_t	*texture[4];
+	mlx_texture_t	*path[4];
+	int 		count_so;
+	int 		count_no;
+	int 		count_we;
+	int 		count_ea;
+	int 		count_c;
+	int			count_f;
+	int			direction;
 	int			tex_x;
 	int			tex_y;
 	double		step;
@@ -58,14 +66,16 @@ typedef struct s_player
 	double	dir_y;
 	double	old_dirx;
 	double	old_planex;
+	char	orientation;
 }			t_player;
 
 typedef struct s_map
 {
-	char		*f_color;
-	char		*c_color;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	int			line;
+	int 		dir;
+	int			start_map;
 	char		**map;
 }				t_map;
 
@@ -95,6 +105,7 @@ typedef struct s_game
 {
 	int			x;
 	int			y;
+	int			fd;
 	t_player	player;
 	t_map		map;
 	t_ray		ray;
@@ -102,11 +113,28 @@ typedef struct s_game
 	t_ceilfloor	ceilfloor;
 }				t_game;
 
-void		init_map(t_game *game);
-void		init_player(t_game *game);
-void		init_text(t_game *game);
+int 		check_line(char *str, t_game *data);
+int			is_char_valid(char c);
+void		exit_error(char *str);
+void 		size_map (t_game *data);
+void		check_texture(char **map, t_game *data);
+void		get_pos_player(t_game *pos);
+void		check_for_texture(char **map, t_game *data);
+void		check_zero(t_game *game, char **map_cpy);
+void 		parse_map(t_game *data);
+void 		init_all_of_value(t_game *data);
+size_t		ft_strlen(const char *s);
+int			strlen_flood(const char *s);
+void 		free_tab(char **tab);
+char		**get_map(t_game *data);
+void		check_cub_argv(char *argv);
+void 		open_fd(t_game *data,  char **argv);
+int			ft_strcmp(const char *s1, const char *s2);
+void		set_color(t_game *data, char *line, int *count);
 
-void		parsing(t_map map, t_player player);
+void		init_mlx(t_game *game);
+void		player_orientation(t_game *game);
+void		init_text(t_game *game);
 
 void		start_game(t_game *game);
 

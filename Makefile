@@ -4,8 +4,18 @@ SRCPATH = src/
 LIBFT = libft/libft.a
 LIBMLX	= MLX42
 SRCS = main.c \
+		parsing/have_map.c \
+		parsing/parsing_map.c \
+		parsing/parsing_color.c \
+		parsing/parsing_arg_and_fd.c \
+		parsing/parsing_map_utils.c \
+		parsing/parsing_pos_player.c \
+		parsing/parsing_texture.c \
+		parsing/init_all_of_value.c \
+		parsing/free_and_error.c \
+		parsing/get_next_line/get_next_line.c \
+		parsing/get_next_line/get_next_line_utils.c \
 		setup/init.c \
-		setup/parsing.c \
 		exec/map.c \
 		exec/hook.c \
 		exec/utils.c \

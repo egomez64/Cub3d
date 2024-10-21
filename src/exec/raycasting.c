@@ -44,7 +44,7 @@ void	raycasting2(t_game *game)
 void	raycasting3(t_game *game)
 {
 	game->ray.hit = 0;
-	while (game->ray.hit == 0)
+	while (game->ray.hit == 0 && game->ray.ray_x - game->ray.map_x < 1000 && game->ray.ray_y - game->ray.map_y < 1000)
 	{
 		if (game->ray.sidedist_x < game->ray.sidedist_y)
 		{
@@ -108,10 +108,11 @@ void	raycasting5(t_game *game)
 void	raycasting(t_game *game)
 {
 	game->x = 0;
+
 	while (game->x < S_W)
 	{
-		draw_ceiling_floor(game, S_H / 2, S_H, get_color_rgba(0, 255, 0, 255));
-		draw_ceiling_floor(game, 0, S_H / 2, get_color_rgba(0, 0, 255, 255));
+		draw_ceiling_floor(game, S_H / 2, S_H, game->ceilfloor.floor_color);
+		draw_ceiling_floor(game, 0, S_H / 2,game->ceilfloor.ceil_color);
 		game->ray.camera_x = 2 * game->x / (double)S_W - 1;
 		game->ray.ray_x = game->player.dir_x
 			+ game->player.plane_x * game->ray.camera_x;
