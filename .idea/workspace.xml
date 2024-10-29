@@ -8,10 +8,10 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="Cub3d" targetName="re" />
-      <config projectName="Cub3d" targetName="all" />
-      <config projectName="Cub3d" targetName="fclean" />
-      <config projectName="Cub3d" targetName="cub3D" />
+      <config projectName="bdanyCub" targetName="cub3D" />
+      <config projectName="bdanyCub" targetName="fclean" />
+      <config projectName="bdanyCub" targetName="all" />
+      <config projectName="bdanyCub" targetName="re" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -20,22 +20,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0b0a153-3130-44a1-b7ad-3a751fc647fb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Cub3d.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Cub3d.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easy_map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hard_map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/ft_strlen.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_strlen.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/libft/libft.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middle_map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/free.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exec/raycasting.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/exec/raycasting.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/parsing.c" beforeDir="false" />
+    <list default="true" id="fb6cf686-1f81-463a-b37a-67254c156790" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/map/easy_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map/easy_map.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/middle_map.cub" beforeDir="false" afterPath="$PROJECT_DIR$/map/middle_map.cub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_map_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing_map_utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,14 +47,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="Cub3d" />
+              <option name="name" value="bdanyCub" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="Cub3d" />
+                <option name="name" value="bdanyCub" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -80,31 +68,34 @@
       </map>
     </option>
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2lLnqxnEUKRgBNunHBSvarnpEYB" />
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2024" />
+    <option name="minorVersion" value="2.2" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2o77UzV9y5SrB6eASvkKqflwDYc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Native Application.all.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/nfs/homes/egomez/Documents/Projets/Cub3d",
+    "last_opened_file_path": "/nfs/homes/egomez/Documents/Projets/bdanyCub",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -114,22 +105,22 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="map/map_space.cub" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="./cub3D">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bdanyCub" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cub3D" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="cub3D" CONFIG_NAME="cub3D" version="1">
+    <configuration name="cub3D" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bdanyCub" TARGET_NAME="cub3D" CONFIG_NAME="cub3D" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
+    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bdanyCub" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3d" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bdanyCub" TARGET_NAME="re" CONFIG_NAME="re" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -144,18 +135,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c0b0a153-3130-44a1-b7ad-3a751fc647fb" name="Changes" comment="" />
-      <created>1724962074685</created>
+      <changelist id="fb6cf686-1f81-463a-b37a-67254c156790" name="Changes" comment="" />
+      <created>1730208780140</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1724962074685</updated>
-      <workItem from="1724962076231" duration="4000" />
-      <workItem from="1724968420773" duration="2000" />
-      <workItem from="1726575227157" duration="1000" />
-      <workItem from="1726833081937" duration="1000" />
-      <workItem from="1727183244085" duration="1000" />
-      <workItem from="1727183924208" duration="1000" />
-      <workItem from="1729507383488" duration="16566000" />
+      <updated>1730208780140</updated>
+      <workItem from="1730208781314" duration="4195000" />
     </task>
     <servers />
   </component>

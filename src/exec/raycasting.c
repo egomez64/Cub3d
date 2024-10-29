@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bdany <bdany@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:51:17 by egomez            #+#    #+#             */
-/*   Updated: 2024/08/26 16:51:18 by egomez           ###   ########.fr       */
+/*   Updated: 2024/10/23 14:09:49 by bdany            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	raycasting2(t_game *game)
 void	raycasting3(t_game *game)
 {
 	game->ray.hit = 0;
-	while (game->ray.hit == 0 && game->ray.ray_x - game->ray.map_x < 1000 && game->ray.ray_y - game->ray.map_y < 1000)
+	while (game->ray.hit == 0 && \
+	game->ray.ray_x - game->ray.map_x < 1000 && \
+	game->ray.ray_y - game->ray.map_y < 1000)
 	{
 		if (game->ray.sidedist_x < game->ray.sidedist_y)
 		{
@@ -90,8 +92,8 @@ void	raycasting4(t_game *game)
 	if (game->ray.side == 1 && game->ray.ray_y < 0)
 		game->texture.tex_x = T_W - game->texture.tex_x - 1;
 	game->texture.step = 1.0 * T_H / game->ray.lineheight;
-	game->texture.tex_pos = (game->ray.draw_start - game->ray.perpwalldist
-			- S_H / 2 + game->ray.lineheight / 2) * game->texture.step;
+	game->texture.tex_pos = (game->ray.draw_start - \
+	S_H / 2 + game->ray.lineheight / 2) * game->texture.step;
 	raycasting5(game);
 }
 
@@ -108,11 +110,10 @@ void	raycasting5(t_game *game)
 void	raycasting(t_game *game)
 {
 	game->x = 0;
-
 	while (game->x < S_W)
 	{
 		draw_ceiling_floor(game, S_H / 2, S_H, game->ceilfloor.floor_color);
-		draw_ceiling_floor(game, 0, S_H / 2,game->ceilfloor.ceil_color);
+		draw_ceiling_floor(game, 0, S_H / 2, game->ceilfloor.ceil_color);
 		game->ray.camera_x = 2 * game->x / (double)S_W - 1;
 		game->ray.ray_x = game->player.dir_x
 			+ game->player.plane_x * game->ray.camera_x;

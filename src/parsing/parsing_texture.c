@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptiste <baptiste@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdany <bdany@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:40:11 by baptiste          #+#    #+#             */
-/*   Updated: 2024/10/20 15:48:51 by baptiste         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:31:03 by bdany            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_for_texture(char **map, t_game *data)
 	int		i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		if (!ft_strncmp(map[i], "NO ", 3))
 			data->texture.count_no++;
@@ -42,64 +42,72 @@ void	check_for_texture(char **map, t_game *data)
 			data->texture.count_c++;
 		i++;
 	}
-	if(check_count_texture(data) == 1)
-		exit_error("error: not enought textures !\n");
+	if (check_count_texture(data) == 1)
+	{
+		free_tab(map);
+		exit_error("error: not enought or too many textures\n");
+	}
 }
 
-static void	load_image(char *line, mlx_texture_t **path, int *count)
+static void	load_image(char *line, mlx_texture_t **path, int *count, \
+	t_game *data)
 {
 	char	**tab;
+
 	*path = NULL;
 	tab = ft_split(line, ' ');
-	
-	if (!tab || !line)
+	if (tab[1])
 	{
-		free(tab);
-		free(line);
-		exit_error("error: texture can't be load1\n");
+		if ((ft_strlen(tab[1]) >= 4) && \
+		(ft_strcmp(tab[1] + ft_strlen(tab[1]) - 4, ".png") == 0))
+			*path = mlx_load_png(tab[1]);
+		else
+		{
+			free_tab(tab);
+			exit_free_all("error: texture can't be load\n", data);
+		}
 	}
-	*path = mlx_load_png(tab[1]);
-	if (!(*path))
+	if (!(*path) || !tab || !line)
 	{
 		free_tab(tab);
-		free(line);
-		exit_error("error: texture can't be load\n");
+		exit_free_all("error: texture can't be load\n", data);
 	}
 	(*count)++;
-	// free(line);
 	free_tab(tab);
 }
 
 static void	load_texture(char **map, t_game *data, int i, int *count)
 {
-	if (strncmp(map[i], "NO ", 3) == 0)
-		load_image(map[i], &data->texture.path[0], count);
-	else if (strncmp(map[i], "SO ", 3) == 0)
-		load_image(map[i], &data->texture.path[1], count);
-	else if (strncmp(map[i], "EA ", 3) == 0)
-		load_image(map[i], &data->texture.path[2], count);
-	else if (strncmp(map[i], "WE ", 3) == 0)
-		load_image(map[i], &data->texture.path[3], count);
-	else if (strncmp(map[i], "F ", 2) == 0)
+	if (ft_strncmp(map[i], "NO ", 3) == 0)
+		load_image(map[i], &data->texture.path[0], count, data);
+	else if (ft_strncmp(map[i], "SO ", 3) == 0)
+		load_image(map[i], &data->texture.path[1], count, data);
+	else if (ft_strncmp(map[i], "EA ", 3) == 0)
+		load_image(map[i], &data->texture.path[2], count, data);
+	else if (ft_strncmp(map[i], "WE ", 3) == 0)
+		load_image(map[i], &data->texture.path[3], count, data);
+	else if (ft_strncmp(map[i], "F ", 2) == 0)
 		set_color(data, map[i], count);
-	else if (strncmp(map[i], "C ", 2) == 0)
+	else if (ft_strncmp(map[i], "C ", 2) == 0)
 		set_color(data, map[i], count);
 }
 
 void	check_texture(char **map, t_game *data)
 {
 	int	i;
-	int count;
+	int	count;
 
 	i = 0;
 	count = 0;
 	while (map[i])
 	{
 		load_texture(map, data, i, &count);
-		if (strncmp(map[i], "NO ", 3) && strncmp(map[i], "SO ", 3) && strncmp(map[i], "EA ", 3)
-			&& strncmp(map[i], "WE ", 3) && strncmp(map[i], "F ", 2) && strncmp(map[i], "C ", 2) && map[i][0] != '\0')
-			exit_error("error: try to load a bad name texture !\n");
-		if(count == 6)
+		if (ft_strncmp(map[i], "NO ", 3) && ft_strncmp(map[i], "SO ", 3) \
+		&& ft_strncmp(map[i], "EA ", 3) && ft_strncmp(map[i], "WE ", 3) \
+		&& ft_strncmp(map[i], "F ", 2) && ft_strncmp(map[i], "C ", 2) \
+		&& map[i][0] != '\0')
+			exit_free_all("error: try to load a bad name texture !\n", data);
+		if (count == 6)
 			break ;
 		i++;
 	}

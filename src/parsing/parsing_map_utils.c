@@ -3,80 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptiste <baptiste@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bdany <bdany@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:50:29 by baptiste          #+#    #+#             */
-/*   Updated: 2024/10/20 16:51:38 by baptiste         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:05:29 by bdany            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	strlen_flood(const char *s)
+char	**cpy_tab(t_game *data)
 {
-	int	i;
+	int		i;
+	char	**map;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
+	map = ft_calloc(1, sizeof(char *) * (data->map.line - data->map.start_map));
+	while (data->map.map && data->map.map[i])
 	{
+		map[i] = ft_strdup(data->map.map[i]);
 		i++;
 	}
-	return (i);
+	return (map);
 }
 
-int	is_char_valid(char c)
+static int	flood_fill_zero(char **map, int x, int y, t_game *game)
 {
-	return (c == 'N' || c == 'W' || c == 'S' || c == 'E'
-		|| c == '0' || c == '1' || c == ' ' || c == '\n' || c == '\0');
+	if (y < 0 || y >= game->map.line || x < 0 || x >= (int)ft_strlen(map[y]))
+		return (1);
+	if (map[y][x] == 'C')
+		return (0);
+	if (map[y][x] == '1')
+		return (0);
+	if (map[y][x] == '0' || map[y][x] == ' ')
+		map[y][x] = 'C';
+	if (flood_fill_zero(map, x + 1, y, game)
+		|| flood_fill_zero(map, x - 1, y, game)
+		|| flood_fill_zero(map, x, y + 1, game)
+		|| flood_fill_zero(map, x, y - 1, game))
+		return (1);
+	return (0);
 }
-
-static void	flood_fill_zero(char **map, int x, int y, t_game *game)
-{
-	map[y][x] = 'c';
-	if (y > 0 && x < strlen_flood(map[y - 1]) && \
-	(map[y - 1][x] == '0' || map[y - 1][x] == ' '))
-		flood_fill_zero(map, x, y - 1, game);
-	else if (y == 0 || (y > 0 && x < strlen_flood(map[y - 1]) && \
-	map[y - 1][x] != '1' && map[y - 1][x] != 'c'))
-	{
-		ft_putstr_fd("flood zero\n", 2);
-		exit(EXIT_FAILURE);
-	}
-		// exit_0_non_closed_by_1(map, game);
-	if (x > 0 && y < game->map.line && \
-	(map[y][x - 1] == '0' || map[y][x - 1] == ' '))
-		flood_fill_zero(map, x - 1, y, game);
-	else if (x == 0 || (x > 0 && y < game->map.line && \
-	map[y][x - 1] != '1' && map[y][x - 1] != 'c'))
-	{
-		ft_putstr_fd("flood zero\n", 2);
-		exit(EXIT_FAILURE);
-	}
-		// exit_0_non_closed_by_1(map, game);
-	if (y <game->map.line - 1 && x < strlen_flood(map[y + 1]) && \
-	(map[y + 1][x] == '0' || map[y + 1][x] == ' '))
-		flood_fill_zero(map, x, y + 1, game);
-	else if (y == game->map.line - 1 || (y < game->map.line - 1 && \
-	x < strlen_flood(map[y + 1]) && map[y + 1][x] != '1' && map[y + 1][x] != 'c'))
-	{
-		ft_putstr_fd("flood zero\n", 2);
-		exit(EXIT_FAILURE);
-	}
-		// exit_0_non_closed_by_1(map, game);
-	if (x < strlen_flood(map[y]) - 1 && y <game->map.line && \
-	(map[y][x + 1] == '0' || map[y][x + 1] == ' '))
-		flood_fill_zero(map, x + 1, y, game);
-	else if (x == strlen_flood(map[y]) - 1 || (x < strlen_flood(map[y]) - 1 && \
-	y < game->map.line && map[y][x + 1] != '1' && map[y][x + 1] != 'c'))
-	{
-		ft_putstr_fd("flood zero\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	// exit_0_non_closed_by_1(map, game);
-}
-
 
 void	check_zero(t_game *game, char **map_cpy)
 {
@@ -91,7 +58,11 @@ void	check_zero(t_game *game, char **map_cpy)
 		{
 			if (map_cpy[j][i] == '0')
 			{
-				flood_fill_zero(map_cpy, i, j, game);
+				if (flood_fill_zero(map_cpy, i, j, game) == 1)
+				{
+					free_tab(map_cpy);
+					exit_free_all("error: part of the map is open\n", game);
+				}
 			}
 			i++;
 		}

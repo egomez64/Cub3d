@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bdany <bdany@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:16:22 by egomez            #+#    #+#             */
-/*   Updated: 2024/08/19 15:16:25 by egomez           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:07:04 by bdany            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_map
 	int			line;
 	int 		dir;
 	int			start_map;
+	char		**all_map;
 	char		**map;
 }				t_map;
 
@@ -106,6 +107,7 @@ typedef struct s_game
 	int			x;
 	int			y;
 	int			fd;
+	int			count_flood;
 	t_player	player;
 	t_map		map;
 	t_ray		ray;
@@ -113,8 +115,6 @@ typedef struct s_game
 	t_ceilfloor	ceilfloor;
 }				t_game;
 
-int 		check_line(char *str, t_game *data);
-int			is_char_valid(char c);
 void		exit_error(char *str);
 void 		size_map (t_game *data);
 void		check_texture(char **map, t_game *data);
@@ -124,13 +124,16 @@ void		check_zero(t_game *game, char **map_cpy);
 void 		parse_map(t_game *data);
 void 		init_all_of_value(t_game *data);
 size_t		ft_strlen(const char *s);
-int			strlen_flood(const char *s);
 void 		free_tab(char **tab);
 char		**get_map(t_game *data);
 void		check_cub_argv(char *argv);
 void 		open_fd(t_game *data,  char **argv);
 int			ft_strcmp(const char *s1, const char *s2);
 void		set_color(t_game *data, char *line, int *count);
+char		**cpy_tab(t_game *data);
+void		is_empty_line(char *line, t_game *data);
+void		validate_line(char *line, t_game *data);
+void		exit_free_all(char *str, t_game *data);
 
 void		init_mlx(t_game *game);
 void		player_orientation(t_game *game);

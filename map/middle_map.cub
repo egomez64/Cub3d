@@ -1,7 +1,28 @@
-      11111
-     1000001
-     100S001
-     1000001
-     1000001
-     1000001
-      11111
+NO textures/north.png
+
+
+SO                                     ./textures/south.png
+
+WE ./textures/west.png
+
+
+
+EA ./textures/east.png
+
+
+F 0, 0, 0
+C                       68                       ,                         200, 120
+
+111
+101
+101
+101
+101
+101
+101
+101
+101
+101
+1N1
+101
+111

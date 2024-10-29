@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "cub3d.h": "c"
-	},
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"C_Cpp.errorSquiggles": "disabled"
-}

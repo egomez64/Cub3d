@@ -9,6 +9,7 @@ SRCS = main.c \
 		parsing/parsing_color.c \
 		parsing/parsing_arg_and_fd.c \
 		parsing/parsing_map_utils.c \
+		parsing/parsing_map_utils2.c \
 		parsing/parsing_pos_player.c \
 		parsing/parsing_texture.c \
 		parsing/init_all_of_value.c \

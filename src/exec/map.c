@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egomez <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bdany <bdany@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:51:00 by egomez            #+#    #+#             */
-/*   Updated: 2024/08/26 16:51:01 by egomez           ###   ########.fr       */
+/*   Updated: 2024/10/24 11:29:32 by bdany            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,40 @@ void	start_game(t_game *game)
 	raycasting(game);
 }
 
+static int	select_texture(t_game *game)
+{
+	if (game->ray.side == 0)
+	{
+		if (game->player.x - game->ray.map_x < 0)
+			return (3);
+		else
+			return (2);
+	}
+	else
+	{
+		if (game->player.y - game->ray.map_y < 0)
+			return (0);
+		else
+			return (1);
+	}
+}
+
 void	draw_textures(t_game *game)
 {
 	uint32_t	coord;
 	int			num;
 	uint8_t		*pix;
-	size_t	max_size;
+	size_t		max_size;
 
 	game->texture.tex_y = (int)game->texture.tex_pos & (T_H - 1);
 	coord = (T_W * game->texture.tex_y + (T_W - game->texture.tex_x)) * 4;
 	game->texture.tex_pos += game->texture.step;
-	if (game->ray.side == 0)
-	{
-		if (game->player.x - game->ray.map_x < 0)
-			num = 3;
-		else
-			num = 2;
-	}
-	else
-	{
-		if (game->player.y - game->ray.map_y < 0)
-			num = 0;
-		else
-			num = 1;
-	}
-	max_size = game->texture.texture[num]->width * game->texture.texture[num]->height * 4;
+	num = select_texture(game);
+	max_size = game->texture.texture[num]->width \
+	* game->texture.texture[num]->height * 4;
 	pix = game->texture.texture[num]->pixels;
-	
 	if (coord < max_size)
 		game->texture.color = get_color_rgba(pix[coord], pix[coord + 1],
 				pix[coord + 2], pix[coord + 3]);
 	mlx_put_pixel(game->map.img, game->x, game->y, game->texture.color);
 }
-
